@@ -1,3 +1,5 @@
+'use strict';
+
 import program from 'commander';
 import { VERSION } from './utils/constants';
 import apply from './index';
