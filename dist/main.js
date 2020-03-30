@@ -17,7 +17,7 @@ var _chalk2 = _interopRequireDefault(_chalk);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * zero commands
+ * soulme commands
  *    - config
  *    - init 
  */
@@ -25,12 +25,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 let actionMap = {
     init: {
         description: 'generate a new project from a template',
-        usages: ['zero init templateName projectName']
+        usages: ['soulme init templateName projectName']
     },
     config: {
         alias: 'cfg',
-        description: 'config .zerorc',
-        usages: ['zero config set <k> <v>', 'zero config get <k>', 'zero config remove <k>']
+        description: 'config .soulmerc',
+        usages: ['soulme config set <k> <v>', 'soulme config get <k>', 'soulme config remove <k>']
 
     }
     //other commands
@@ -68,7 +68,7 @@ _commander2.default.on('-h', help);
 _commander2.default.on('--help', help);
 _commander2.default.version(_constants.VERSION, '-V --version').parse(process.argv);
 
-// zero 不带参数时
+// soulme 不带参数时
 if (!process.argv.slice(2).length) {
     _commander2.default.outputHelp(make_green);
 }

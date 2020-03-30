@@ -24,6 +24,6 @@ let config = async (action, key, value) => {
         default:
             break;
     }
-}; // 管理 .zerorc 文件 (当前用户目录下)
+}; // 管理 .soulmerc 文件 (当前用户目录下)
 
 module.exports = config;

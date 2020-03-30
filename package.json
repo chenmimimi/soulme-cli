@@ -1,10 +1,10 @@
 {
-  "name": "zero-cli",
+  "name": "soulme-cli",
   "version": "1.0.0",
   "description": "脚手架",
   "main": "index.js",
   "bin": {
-    "zero": "./bin/www"
+    "soulme": "./bin/www"
   },
   "scripts": {
     "compile": "babel src -d dist",

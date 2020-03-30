@@ -4,7 +4,7 @@ import apply from './index';
 import chalk from 'chalk';
 
 /**
- * zero commands
+ * soulme commands
  *    - config
  *    - init 
  */
@@ -13,16 +13,16 @@ let actionMap = {
     init: {
         description: 'generate a new project from a template',
         usages: [
-            'zero init templateName projectName'
+            'soulme init templateName projectName'
         ]
     },
     config: {
         alias: 'cfg',
-        description: 'config .zerorc',
+        description: 'config .soulmerc',
         usages: [
-            'zero config set <k> <v>',
-            'zero config get <k>',
-            'zero config remove <k>'
+            'soulme config set <k> <v>',
+            'soulme config get <k>',
+            'soulme config remove <k>'
         ]
         
     },
@@ -64,7 +64,7 @@ program.on('-h', help);
 program.on('--help', help);
 program.version(VERSION, '-V --version').parse(process.argv);
 
-// zero 不带参数时
+// soulme 不带参数时
 if (!process.argv.slice(2).length) {
     program.outputHelp(make_green);
 }

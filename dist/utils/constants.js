@@ -14,7 +14,7 @@ const VERSION = exports.VERSION = _package.version;
 const HOME = process.env[process.platform === 'win32' ? 'USERPROFILE' : 'HOME'];
 
 // 配置文件目录
-const RC = exports.RC = `${HOME}/.zerorc`;
+const RC = exports.RC = `${HOME}/.soulmerc`;
 
 // RC 配置下载模板的地方，给 github 的 api 使用
 // https://api.github.com/users/YvetteLau/repos
