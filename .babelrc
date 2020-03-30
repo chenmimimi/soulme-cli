@@ -1,8 +1,16 @@
 {
   "presets": [
-    "env",
-    "react",
-    "stage-0"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      },
+      "react",
+      "stage-0"
+    ]
+    
   ],
   "plugins": [
     "transform-class-properties",
