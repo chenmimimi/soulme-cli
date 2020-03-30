@@ -1,67 +1,82 @@
-"use strict";
+'use strict';
 
-import { RC, DEFAULTS } from './constants';
-import { decode, encode } from 'ini';
-import { promisify } from 'util';
-import chalk from 'chalk';
-import fs from 'fs';
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.remove = exports.set = exports.getAll = exports.get = undefined;
 
-const exits = promisify(fs.exists);
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
+var _constants = require('./constants');
+
+var _ini = require('ini');
+
+var _util = require('util');
+
+var _chalk = require('chalk');
+
+var _chalk2 = _interopRequireDefault(_chalk);
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const exits = (0, _util.promisify)(_fs2.default.exists);
+const readFile = (0, _util.promisify)(_fs2.default.readFile);
+const writeFile = (0, _util.promisify)(_fs2.default.writeFile);
 
 //RC 是配置文件
 //DEFAULTS 是默认的配置
-export const get = async (key) => {
-    const exit = await exits(RC);
+const get = exports.get = async key => {
+    const exit = await exits(_constants.RC);
     let opts;
     if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
+        opts = await readFile(_constants.RC, 'utf8');
+        opts = (0, _ini.decode)(opts);
         return opts[key];
     }
     return '';
-}
+};
 
-export const getAll = async () => {
-    const exit = await exits(RC);
+const getAll = exports.getAll = async () => {
+    const exit = await exits(_constants.RC);
     let opts;
     if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
+        opts = await readFile(_constants.RC, 'utf8');
+        opts = (0, _ini.decode)(opts);
         return opts;
     }
     return {};
-}
+};
 
-export const set = async (key, value) => {
-    const exit = await exits(RC);
+const set = exports.set = async (key, value) => {
+    const exit = await exits(_constants.RC);
     let opts;
     if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
-        if(!key) {
-            console.log(chalk.red(chalk.bold('Error:')), chalk.red('key is required'));
+        opts = await readFile(_constants.RC, 'utf8');
+        opts = (0, _ini.decode)(opts);
+        if (!key) {
+            console.log(_chalk2.default.red(_chalk2.default.bold('Error:')), _chalk2.default.red('key is required'));
             return;
         }
-        if(!value) {
-            console.log(chalk.red(chalk.bold('Error:')), chalk.red('value is required'));
+        if (!value) {
+            console.log(_chalk2.default.red(_chalk2.default.bold('Error:')), _chalk2.default.red('value is required'));
             return;
         }
         Object.assign(opts, { [key]: value });
     } else {
-        opts = Object.assign(DEFAULTS, { [key]: value });
+        opts = Object.assign(_constants.DEFAULTS, { [key]: value });
     }
-    await writeFile(RC, encode(opts), 'utf8');
-}
+    await writeFile(_constants.RC, (0, _ini.encode)(opts), 'utf8');
+};
 
-export const remove = async (key) => {
-    const exit = await exits(RC);
+const remove = exports.remove = async key => {
+    const exit = await exits(_constants.RC);
     let opts;
     if (exit) {
-        opts = await readFile(RC, 'utf8');
-        opts = decode(opts);
+        opts = await readFile(_constants.RC, 'utf8');
+        opts = (0, _ini.decode)(opts);
         delete opts[key];
-        await writeFile(RC, encode(opts), 'utf8');
+        await writeFile(_constants.RC, (0, _ini.encode)(opts), 'utf8');
     }
-}
+};
