@@ -1,9 +1,14 @@
 {
   "name": "zero-cli",
   "version": "1.0.0",
-  "description": "快速初始化项目",
+  "description": "脚手架",
   "main": "index.js",
+  "bin": {
+    "zero": "./bin/www"
+  },
   "scripts": {
+    "compile": "babel src -d dist",
+    "watch": "npm run compile -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
