@@ -14,9 +14,7 @@ module.exports = class extends Generator {
     // Have Yeoman greet the user.
     this.log(
       yosay(
-        `Welcome to the grand ${chalk.red(
-          "generator-javascript-plugin"
-        )} generator!`
+        `Welcome to the grand ${chalk.red("generator-soulme-cli")} generator!`
       )
     );
 
